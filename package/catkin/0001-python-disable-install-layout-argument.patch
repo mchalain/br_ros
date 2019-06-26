@@ -1,0 +1,25 @@
+From 766f78730be57403241bb92dfa257d4adeb6b2b8 Mon Sep 17 00:00:00 2001
+From: mchalain <marc.chalain@smile.fr>
+Date: Thu, 20 Jun 2019 11:43:50 +0200
+Subject: [PATCH] [python] disable install-layout argument
+
+---
+ cmake/python.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/python.cmake b/cmake/python.cmake
+index 70f3d26..9e8fd19 100644
+--- a/cmake/python.cmake
++++ b/cmake/python.cmake
+@@ -19,7 +19,7 @@ option(SETUPTOOLS_DEB_LAYOUT "Enable debian style python package layout" ${enabl
+ if(SETUPTOOLS_DEB_LAYOUT)
+   message(STATUS "Using Debian Python package layout")
+   set(PYTHON_PACKAGES_DIR dist-packages)
+-  set(SETUPTOOLS_ARG_EXTRA "--install-layout=deb")
++  #set(SETUPTOOLS_ARG_EXTRA "--install-layout=deb")
+   # use major version only when installing 3.x with debian layout
+   if("${PYTHON_VERSION_MAJOR}" STREQUAL "3")
+     set(_PYTHON_PATH_VERSION_SUFFIX "${PYTHON_VERSION_MAJOR}")
+-- 
+2.17.1
+

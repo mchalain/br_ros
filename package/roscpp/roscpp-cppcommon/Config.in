@@ -1,0 +1,3 @@
+config BR2_PACKAGE_ROSCPP_CPPCOMMON
+	bool
+	depends on BR2_PACKAGE_ROSCPP

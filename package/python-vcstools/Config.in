@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_VCSTOOLS
+	bool "python-vcstools"
+	select BR2_PACKAGE_PYTHON_PYYAML # runtime
+	select BR2_PACKAGE_PYTHON_DATEUTIL # runtime
+	help
+	  VCS/SCM source control library for svn, git, hg, and bzr.
+
+	  http://wiki.ros.org/vcstools

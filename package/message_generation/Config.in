@@ -1,0 +1,2 @@
+config BR2_PACKAGE_MESSAGE_GENERATION
+	bool

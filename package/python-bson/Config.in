@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_BSON
+	bool "python-bson"
+	select BR2_PACKAGE_PYTHON_DATEUTIL # runtime
+	select BR2_PACKAGE_PYTHON_SIX # runtime
+	help
+	  BSON codec for Python.
+
+	  http://github.com/py-bson/bson

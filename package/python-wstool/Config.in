@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_WSTOOL
+	bool "python-wstool"
+	select BR2_PACKAGE_PYTHON_VCSTOOLS # runtime
+	select BR2_PACKAGE_PYTHON_PYYAML # runtime
+	help
+	  workspace multi-SCM commands.
+
+	  http://wiki.ros.org/wstool

@@ -1,0 +1,3 @@
+config BR2_PACKAGE_ROS_ROSMAKE
+	bool
+	depends on BR2_PACKAGE_ROS_TARGET

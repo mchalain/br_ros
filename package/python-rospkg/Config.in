@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_ROSPKG
+	bool "python-rospkg"
+	select BR2_PACKAGE_PYTHON_CATKIN_PKG # runtime
+	select BR2_PACKAGE_PYTHON_PYYAML # runtime
+	help
+	  ROS package library.
+
+	  http://wiki.ros.org/rospkg

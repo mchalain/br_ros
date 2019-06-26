@@ -1,0 +1,9 @@
+config BR2_PACKAGE_PYTHON_CATKIN_PKG
+	bool "python-catkin-pkg"
+	select BR2_PACKAGE_PYTHON_DOCUTILS # runtime
+	select BR2_PACKAGE_PYTHON_DATEUTIL # runtime
+	select BR2_PACKAGE_PYTHON_PYPARSING # runtime
+	help
+	  catkin package library.
+
+	  http://wiki.ros.org/catkin_pkg

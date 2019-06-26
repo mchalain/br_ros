@@ -1,0 +1,10 @@
+config BR2_PACKAGE_PYTHON_ROSDEP
+	bool "python-rosdep"
+	select BR2_PACKAGE_PYTHON_CATKIN_PKG # runtime
+	select BR2_PACKAGE_PYTHON_ROSPKG # runtime
+	select BR2_PACKAGE_PYTHON_ROSDISTRO # runtime
+	select BR2_PACKAGE_PYTHON_PYYAML # runtime
+	help
+	  rosdep package manager abstraction tool for ROS.
+
+	  http://wiki.ros.org/rosdep
