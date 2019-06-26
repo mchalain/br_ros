@@ -29,7 +29,6 @@ menu "Devtools"
 	source "$BR2_EXTERNAL_ROS_PATH/package/python-rosdep/Config.in"
 	source "$BR2_EXTERNAL_ROS_PATH/package/python-catkin-pkg/Config.in"
 	source "$BR2_EXTERNAL_ROS_PATH/package/python-rospkg/Config.in"
-	source "$BR2_EXTERNAL_ROS_PATH/package/python-rosdistro/Config.in"
 endmenu
 
 config BR2_PACKAGE_ROS_PLUGINS
