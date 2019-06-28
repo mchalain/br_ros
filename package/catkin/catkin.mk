@@ -16,12 +16,20 @@ HOST_CATKIN_DEPENDENCIES=host-python-empy host-python-pyparsing-host host-python
 
 CATKIN_CONF_OPTS+=-DCATKIN_ENABLE_TESTING=OFF
 CATKIN_CONF_OPTS+=-DSETUPTOOLS_DEB_LAYOUT=OFF
+ 
+ROS_INSTALL_PREFIX = /opt/ros
 
-define HOST_CATKIN_POST_INSTALL_HOOKS
+define CATKIN_FINAL_INSTALL
 	cd $(HOST_DIR)/share/cmake*/Modules
 	ln -s ../../catkin/cmake catkin
 	cp $(CATKIN_PKGDIR)/Findcatkin.cmake $(HOST_DIR)/share/cmake*/Modules
+	mkdir -p $(STAGING_DIR)$(ROS_INSTALL_PREFIX)
+	# create catkin workspaces
+	touch $(STAGING_DIR)$(ROS_INSTALL_PREFIX)/.catkin
+	touch $(HOST_DIR)/.catkin
 endef
+
+HOST_CATKIN_POST_INSTALL_HOOKS += CATKIN_FINAL_INSTALL
 
 $(eval $(cmake-package))
 $(eval $(host-cmake-package))
