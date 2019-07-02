@@ -2,6 +2,10 @@ config BR2_PACKAGE_ROS
 	bool "ROS: Robot OS"
 	depends on BR2_PACKAGE_PYTHON
 
+config BR2_PACKAGE_ROS_INSTALL_PREFIX
+	string "ROS: installation directory"
+	default: /opt/ros
+
 config BR2_PACKAGE_ROS_DEVTOOLS
 	bool "devtools: Host tools for ROS distribution"
 	depends on BR2_PACKAGE_ROS
@@ -29,21 +33,54 @@ menu "Devtools"
 	source "$BR2_EXTERNAL_ROS_PATH/package/python-rosdep/Config.in"
 	source "$BR2_EXTERNAL_ROS_PATH/package/python-catkin-pkg/Config.in"
 	source "$BR2_EXTERNAL_ROS_PATH/package/python-rospkg/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/catkin/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/cmake-modules/Config.in"
 endmenu
 
 config BR2_PACKAGE_ROS_PLUGINS
 	bool "plugins: Target framework for ROS distribution"
 	depends on BR2_PACKAGE_ROS
+	depends on BR2_PACKAGE_ROS_DEVTOOLS
+	select BR2_PACKAGE_ROSPACK
+	select BR2_PACKAGE_ROS_FRAMEWORK
+	select BR2_PACKAGE_CLASS_LOADER
+	select BR2_PACKAGE_COMMON_MSGS
+	select BR2_PACKAGE_MESSAGE_RUNTIME
+	select BR2_PACKAGE_CONSOLE_BRIDGE
+	select BR2_PACKAGE_ROSCPP
+	select BR2_PACKAGE_ROS_COMM
+	select BR2_PACKAGE_ROS_COMM_MSGS
+	select BR2_PACKAGE_CONSOLE_BRIDGE
+	select BR2_PACKAGE_ROSCONSOLE
+	select BR2_PACKAGE_ROSCONSOLE_BRIDGE
 
 menu "Plugins"
 	depends on BR2_PACKAGE_ROS_PLUGINS
 
 	source "$BR2_EXTERNAL_ROS_PATH/package/rospack/Config.in"
 	source "$BR2_EXTERNAL_ROS_PATH/package/ros/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/class-loader/Config.in"
 	source "$BR2_EXTERNAL_ROS_PATH/package/console-bridge/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/rosconsole/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/rosconsole-bridge/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/roscpp/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros-comm-msgs/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros-comm/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/common_msgs/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/std_msgs/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/message_generation/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/gencpp/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/geneus/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/genlisp/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/genmsg/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/gennodejs/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/genpy/Config.in"
 endmenu
 
 menu "Python packages"
+	source "$BR2_EXTERNAL_ROS_PATH/package/python-pyparsing-host/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/python-pyyaml-host/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/python-dateutil-host/Config.in"
 	source "$BR2_EXTERNAL_ROS_PATH/package/python-empy/Config.in"
 	source "$BR2_EXTERNAL_ROS_PATH/package/python-bson/Config.in"
 	source "$BR2_EXTERNAL_ROS_PATH/package/python-defusedxml/Config.in"
