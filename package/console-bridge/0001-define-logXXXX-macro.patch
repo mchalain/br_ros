@@ -1,0 +1,35 @@
+From f296e862630f6594159ebcb4bc8499808c220ddb Mon Sep 17 00:00:00 2001
+From: mchalain <marc.chalain@smile.fr>
+Date: Thu, 27 Jun 2019 09:59:07 +0200
+Subject: [PATCH] define logXXXX macro
+
+---
+ include/console_bridge/console.h | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/include/console_bridge/console.h b/include/console_bridge/console.h
+index d907e05..4d2ea54 100644
+--- a/include/console_bridge/console.h
++++ b/include/console_bridge/console.h
+@@ -75,6 +75,18 @@
+ #define CONSOLE_BRIDGE_logDebug(fmt, ...)  \
+   console_bridge::log(__FILE__, __LINE__, console_bridge::CONSOLE_BRIDGE_LOG_DEBUG, fmt, ##__VA_ARGS__)
+ 
++#ifndef logError
++#define logError CONSOLE_BRIDGE_logError
++#endif
++#ifndef logWarn
++#define logWarn CONSOLE_BRIDGE_logWarn
++#endif
++#ifndef logInform
++#define logInform CONSOLE_BRIDGE_logInform
++#endif
++#ifndef logDebug
++#define logDebug CONSOLE_BRIDGE_logDebug
++#endif
+ 
+ /** \brief Message namespace. This contains classes needed to
+     output error messages (or logging) from within the library.
+-- 
+2.17.1
+

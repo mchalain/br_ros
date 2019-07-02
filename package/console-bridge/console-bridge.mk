@@ -7,4 +7,4 @@ CONSOLE_BRIDGE_INSTALL_STAGING=YES
 
 ROS_INSTALL_PREFIX=/opt/ros
 
-$(eval $(catkin-package))
+$(eval $(cmake-package))
