@@ -9,8 +9,7 @@ STD_MSGS_SITE = https://github.com/ros/std_msgs/archive
 STD_MSGS_LICENSE = BSD3
 STD_MSGS_LICENSE_FILES = LICENSE
 STD_MSGS_INSTALL_STAGING=YES
+STD_MSGS_DEPENDENCIES += host-catkin
 STD_MSGS_DEPENDENCIES+=genmsg
-
-ROS_INSTALL_PREFIX=/opt/ros
 
 $(eval $(catkin-package))
