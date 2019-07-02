@@ -1,9 +1,7 @@
-ROS_VERSION = 1.11.14
-ROS_SOURCE = $(ROS_VERSION).tar.gz
-ROS_SITE = https://github.com/ros/ros/archive
-ROS_LICENSE = BSD3
-ROS_LICENSE_FILES = LICENSE
-
-ROS_INSTALL_PREFIX=/opt/ros
+ROS_FRAMEWORK_VERSION = 1.11.14
+ROS_FRAMEWORK_SOURCE = $(ROS_FRAMEWORK_VERSION).tar.gz
+ROS_FRAMEWORK_SITE = https://github.com/ros/ros/archive
+ROS_FRAMEWORK_LICENSE = BSD3
+ROS_FRAMEWORK_LICENSE_FILES = LICENSE
 
 include $(sort $(wildcard $(BR2_EXTERNAL_ROS_PATH)/package/ros/*/*.mk))
