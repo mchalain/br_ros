@@ -10,5 +10,7 @@ PYTHON_CATKIN_PKG_SITE = https://files.pythonhosted.org/packages/5d/ca/b0bcd8b64
 PYTHON_CATKIN_PKG_SETUP_TYPE = setuptools
 PYTHON_CATKIN_PKG_LICENSE = FIXME: please specify the exact BSD version
 
-$(eval $(python-package))
+HOST_PYTHON_CATKIN_PKG_DEPENDENCIES +=  host-python-pyparsing-host
+HOST_PYTHON_CATKIN_PKG_DEPENDENCIES +=  host-python-dateutil-host
+
 $(eval $(host-python-package))

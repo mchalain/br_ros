@@ -1,5 +1,7 @@
 config BR2_PACKAGE_CATKIN
 	bool "catkin"
+	select BR2_PACKAGE_PYTHON_CATKIN_PKG
+	select BR2_PACKAGE_PYTHON_EMPY
 	help
 	  catkin tools.
 
