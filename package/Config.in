@@ -1,8 +1,31 @@
+menu "Python Host packages"
+	source "$BR2_EXTERNAL_ROS_PATH/package/python-pyparsing-host/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/python-pyyaml-host/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/python-dateutil-host/Config.in"
+endmenu
+
+menu "Python packages"
+	source "$BR2_EXTERNAL_ROS_PATH/package/python-empy/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/python-bson/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/python-defusedxml/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/python-future/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/python-pbr/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/python-vcstools/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/python-wstool/Config.in"
+endmenu
+
+config BR2_PACKAGE_GLIBC_FOR_ROS
+	bool "ROS: select glibc inside the Toolchain"
+	depends on ! BR2_TOOLCHAIN_USES_GLIBC
+	default y
+
 config BR2_PACKAGE_ROS
 	bool "ROS: Robot OS"
-	depends on BR2_PACKAGE_PYTHON
+	depends on BR2_TOOLCHAIN_USES_GLIBC
+	select BR2_PACKAGE_PYTHON
 
 config BR2_PACKAGE_ROS_INSTALL_PREFIX
+	depends on BR2_PACKAGE_ROS
 	string "ROS: installation directory"
 	default: /opt/ros
 
@@ -75,18 +98,5 @@ menu "Plugins"
 	source "$BR2_EXTERNAL_ROS_PATH/package/genmsg/Config.in"
 	source "$BR2_EXTERNAL_ROS_PATH/package/gennodejs/Config.in"
 	source "$BR2_EXTERNAL_ROS_PATH/package/genpy/Config.in"
-endmenu
-
-menu "Python packages"
-	source "$BR2_EXTERNAL_ROS_PATH/package/python-pyparsing-host/Config.in"
-	source "$BR2_EXTERNAL_ROS_PATH/package/python-pyyaml-host/Config.in"
-	source "$BR2_EXTERNAL_ROS_PATH/package/python-dateutil-host/Config.in"
-	source "$BR2_EXTERNAL_ROS_PATH/package/python-empy/Config.in"
-	source "$BR2_EXTERNAL_ROS_PATH/package/python-bson/Config.in"
-	source "$BR2_EXTERNAL_ROS_PATH/package/python-defusedxml/Config.in"
-	source "$BR2_EXTERNAL_ROS_PATH/package/python-future/Config.in"
-	source "$BR2_EXTERNAL_ROS_PATH/package/python-pbr/Config.in"
-	source "$BR2_EXTERNAL_ROS_PATH/package/python-vcstools/Config.in"
-	source "$BR2_EXTERNAL_ROS_PATH/package/python-wstool/Config.in"
 endmenu
 
