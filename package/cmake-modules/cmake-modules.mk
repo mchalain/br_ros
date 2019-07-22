@@ -8,7 +8,8 @@ CMAKE_MODULES_SOURCE = $(CMAKE_MODULES_VERSION).tar.gz
 CMAKE_MODULES_SITE = https://github.com/ros/cmake_modules/archive
 CMAKE_MODULES_LICENSE = BSD3
 CMAKE_MODULES_LICENSE_FILES = LICENSE
-CMAKE_MODULES_DEPENDENCIES+=host-catkin
+
+HOST_CMAKE_MODULES_DEPENDENCIES += host-catkin
 
 define CMAKE_MODULES_COPY_CMAKE
         cp -r $(HOST_DIR)/share/cmake_modules/cmake/* $(HOST_DIR)/share/catkin/cmake

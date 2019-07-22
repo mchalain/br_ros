@@ -12,11 +12,15 @@ CATKIN_SOURCE = $(CATKIN_VERSION).tar.gz
 CATKIN_SITE = https://github.com/ros/catkin/archive
 CATKIN_LICENSE = BSD3
 CATKIN_LICENSE_FILES = LICENSE
-HOST_CATKIN_DEPENDENCIES=host-python-empy host-python-pyparsing-host host-python-catkin-pkg
+HOST_CATKIN_DEPENDENCIES += host-cmake
+HOST_CATKIN_DEPENDENCIES += host-python-empy
+HOST_CATKIN_DEPENDENCIES += host-python-catkin-pkg
+
+HOST_CATKIN_DEPENDENCIES += host-python-pyparsing-host
 
 CATKIN_CONF_OPTS+=-DCATKIN_ENABLE_TESTING=OFF
 CATKIN_CONF_OPTS+=-DSETUPTOOLS_DEB_LAYOUT=OFF
- 
+
 define CATKIN_FINAL_INSTALL
 	ln -sf $(HOST_DIR)/share/catkin/cmake $(HOST_DIR)/share/cmake-$(CMAKE_VERSION_MAJOR)/catkin
 	cp $(HOST_CATKIN_PKGDIR)/Findcatkin.cmake $(HOST_DIR)/share/cmake-$(CMAKE_VERSION_MAJOR)/Modules
