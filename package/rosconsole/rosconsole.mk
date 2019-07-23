@@ -12,6 +12,4 @@ ROSCONSOLE_INSTALL_STAGING = YES
 
 ROSCONSOLE_DEPENDENCIES += roscpp ros-rosunit
 
-ROS_INSTALL_PREFIX=/opt/ros
-
 $(eval $(catkin-package))
