@@ -105,5 +105,6 @@ menu "Plugins"
 	source "$BR2_EXTERNAL_ROS_PATH/package/genpy/Config.in"
 	source "$BR2_EXTERNAL_ROS_PATH/package/urdfdom-headers/Config.in"
 	source "$BR2_EXTERNAL_ROS_PATH/package/urdfdom/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/urdf/Config.in"
 endmenu
 
