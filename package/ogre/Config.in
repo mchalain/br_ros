@@ -1,0 +1,9 @@
+config BR2_PACKAGE_OGRE
+	bool "OGRE: 3D graphics rendering engine"
+	depends on BR2_PACKAGE_ZZIPLIB
+	depends on BR2_PACKAGE_FREETYPE
+	depends on BR2_PACKAGE_XORG7
+	depends on BR2_PACKAGE_XLIB_LIBX11
+	depends on BR2_PACKAGE_XLIB_LIBXAW
+
+
