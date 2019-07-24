@@ -1,0 +1,4 @@
+config BR2_PACKAGE_URDFDOM_HEADERS
+	bool
+	depends on BR2_PACKAGE_ROS
+

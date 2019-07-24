@@ -103,5 +103,6 @@ menu "Plugins"
 	source "$BR2_EXTERNAL_ROS_PATH/package/genmsg/Config.in"
 	source "$BR2_EXTERNAL_ROS_PATH/package/gennodejs/Config.in"
 	source "$BR2_EXTERNAL_ROS_PATH/package/genpy/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/urdfdom-headers/Config.in"
 endmenu
 
