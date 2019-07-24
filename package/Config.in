@@ -67,7 +67,7 @@ config BR2_PACKAGE_ROS_PLUGINS
 	select BR2_PACKAGE_ROSPACK
 	select BR2_PACKAGE_ROS_FRAMEWORK
 	select BR2_PACKAGE_CLASS_LOADER
-	select BR2_PACKAGE_COMMON_MSGS
+	select BR2_PACKAGE_ROS_COMMON_MSGS
 	select BR2_PACKAGE_MESSAGE_RUNTIME
 	select BR2_PACKAGE_CONSOLE_BRIDGE
 	select BR2_PACKAGE_ROSCPP
@@ -91,7 +91,7 @@ menu "Plugins"
 	source "$BR2_EXTERNAL_ROS_PATH/package/ros-pluginlib/Config.in"
 	source "$BR2_EXTERNAL_ROS_PATH/package/ros-comm/Config.in"
 	source "$BR2_EXTERNAL_ROS_PATH/package/ros-comm-msgs/Config.in"
-	source "$BR2_EXTERNAL_ROS_PATH/package/common_msgs/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros-common_msgs/Config.in"
 	source "$BR2_EXTERNAL_ROS_PATH/package/std_msgs/Config.in"
 	source "$BR2_EXTERNAL_ROS_PATH/package/message_generation/Config.in"
 	source "$BR2_EXTERNAL_ROS_PATH/package/gencpp/Config.in"
