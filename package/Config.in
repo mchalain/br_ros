@@ -104,9 +104,13 @@ menu "Plugins"
 	source "$BR2_EXTERNAL_ROS_PATH/package/gennodejs/Config.in"
 	source "$BR2_EXTERNAL_ROS_PATH/package/genpy/Config.in"
 
+	config BR2_PACKAGE_ROS_PLUGINS_VISUALIZATION
+		bool "Visualization on X11"
+		select BR2_PACKAGE_RVIZ
 	source "$BR2_EXTERNAL_ROS_PATH/package/urdfdom-headers/Config.in"
 	source "$BR2_EXTERNAL_ROS_PATH/package/urdfdom/Config.in"
 	source "$BR2_EXTERNAL_ROS_PATH/package/urdf/Config.in"
 	source "$BR2_EXTERNAL_ROS_PATH/package/rviz/Config.in"
+
 endmenu
 
