@@ -1,0 +1,4 @@
+config BR2_PACKAGE_ZZIPLIB
+	bool "zzip: lighweight zip/unzip library"
+
+

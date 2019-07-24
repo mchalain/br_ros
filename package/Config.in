@@ -1,3 +1,5 @@
+source "$BR2_EXTERNAL_ROS_PATH/package/zziplib/Config.in"
+
 menu "Python Host packages"
 	source "$BR2_EXTERNAL_ROS_PATH/package/python-pyparsing-host/Config.in"
 	source "$BR2_EXTERNAL_ROS_PATH/package/python-pyyaml-host/Config.in"
