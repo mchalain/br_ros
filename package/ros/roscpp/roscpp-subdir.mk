@@ -6,4 +6,4 @@ ROSCPP_LICENSE_FILES = LICENSE
 
 ROS_INSTALL_PREFIX=/opt/ros
 
-include $(sort $(wildcard $(BR2_EXTERNAL_ROS_PATH)/package/roscpp/*/*.mk))
+include $(sort $(wildcard $(BR2_EXTERNAL_ROS_PATH)/package/ros/roscpp/*/*.mk))

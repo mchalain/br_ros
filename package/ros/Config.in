@@ -1,61 +1,90 @@
-config BR2_PACKAGE_ROS_FRAMEWORK
-	bool "framework base"
+config BR2_PACKAGE_GLIBC_FOR_ROS
+	bool "ROS: select glibc inside the Toolchain"
+	depends on ! BR2_TOOLCHAIN_USES_GLIBC
+	default y
+
+menuconfig BR2_PACKAGE_ROS
+	bool "ROS: Robot OS"
+	depends on BR2_TOOLCHAIN_USES_GLIBC
+	select BR2_PACKAGE_PYTHON
+
+config BR2_PACKAGE_ROS_INSTALL_PREFIX
 	depends on BR2_PACKAGE_ROS
-	select BR2_PACKAGE_ROS_MK
-	select BR2_PACKAGE_ROS_ROSBASH
-	select BR2_PACKAGE_ROS_ROSBOOST_CFG
-	select BR2_PACKAGE_ROS_ROSBUILD
-	select BR2_PACKAGE_ROS_ROSCLEAN
-	select BR2_PACKAGE_ROS_ROSCREATE
-	select BR2_PACKAGE_ROS_ROSLANG
-	select BR2_PACKAGE_ROS_ROSLIB
-	select BR2_PACKAGE_ROS_ROSMAKE
-	select BR2_PACKAGE_ROS_ROSUNIT
+	string "ROS: installation directory"
+	default: /opt/ros
 
-config BR2_PACKAGE_ROS_ROSLIB
-	bool
-	depends on BR2_PACKAGE_ROS_FRAMEWORK
-	select BR2_PACKAGE_BOOST
-	select BR2_PACKAGE_BOOST_FILESYSTEM
-	select BR2_PACKAGE_BOOST_SYSTEM
-	select BR2_PACKAGE_BOOST_PROGRAM_OPTIONS
-	select BR2_PACKAGE_BOOST_THREAD
+menuconfig BR2_PACKAGE_ROS_DEVTOOLS
+	bool "devtools: Host tools for ROS distribution"
+	depends on BR2_PACKAGE_ROS
+	select BR2_PACKAGE_PYTHON_BSON
+	select BR2_PACKAGE_PYTHON_DATEUTIL
+	select BR2_PACKAGE_PYTHON_DEFUSEDXML
+	select BR2_PACKAGE_PYTHON_EMPY
+	select BR2_PACKAGE_PYTHON_FUTURE
+	select BR2_PACKAGE_PYTHON_PBR
+	select BR2_PACKAGE_PYTHON_PYPARSING
+	select BR2_PACKAGE_PYTHON_SIX
+	select BR2_PACKAGE_PYTHON_ECDSA
+	select BR2_PACKAGE_PYTHON_NETIFACES
+	select BR2_PACKAGE_PYTHON_PARAMIKO
+	select BR2_PACKAGE_PYTHON_PYCURL
+	select BR2_PACKAGE_PYTHON_PYPROJ
+	select BR2_PACKAGE_PYTHON_VCSTOOLS
+	select BR2_PACKAGE_PYTHON_WSTOOL
+	select BR2_PACKAGE_CATKIN
+	select BR2_PACKAGE_CMAKE_MODULES
 
-config BR2_PACKAGE_ROS_MK
-	bool
-	depends on BR2_PACKAGE_ROS_FRAMEWORK
+if BR2_PACKAGE_ROS_DEVTOOLS
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros/python-rosdep/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros/python-catkin-pkg/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros/python-rospkg/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros/catkin/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros/cmake-modules/Config.in"
+endif
 
-config BR2_PACKAGE_ROS_ROSBUILD
-	bool
-	depends on BR2_PACKAGE_ROS_FRAMEWORK
+menuconfig BR2_PACKAGE_ROS_PLUGINS
+	bool "plugins: Target framework for ROS distribution"
+	depends on BR2_PACKAGE_ROS
+	select BR2_PACKAGE_ROSPACK
+	select BR2_PACKAGE_ROS_FRAMEWORK
+	select BR2_PACKAGE_CLASS_LOADER
+	select BR2_PACKAGE_ROS_COMMON_MSGS
+	select BR2_PACKAGE_MESSAGE_RUNTIME
+	select BR2_PACKAGE_CONSOLE_BRIDGE
+	select BR2_PACKAGE_ROSCPP
+	select BR2_PACKAGE_ROS_COMM
+	select BR2_PACKAGE_ROS_COMM_MSGS
+	select BR2_PACKAGE_CONSOLE_BRIDGE
+	select BR2_PACKAGE_ROSCONSOLE
+	select BR2_PACKAGE_ROSCONSOLE_BRIDGE
 
-config BR2_PACKAGE_ROS_ROSBASH
-	bool
-	depends on BR2_PACKAGE_ROS_FRAMEWORK
-	select BR2_PACKAGE_BUSYBOX_SHOW_OTHERS
-	select BR2_PACKAGE_BASH
-	select BR2_PACKAGE_FINDUTILS
+if BR2_PACKAGE_ROS_PLUGINS
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros/rospack/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros/core/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros/class-loader/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros/console-bridge/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros/rosconsole/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros/rosconsole-bridge/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros/roscpp/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros/ros-actionlib/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros/ros-pluginlib/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros/ros-comm/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros/ros-comm-msgs/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros/ros-common_msgs/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros/std_msgs/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros/message_generation/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros/gencpp/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros/geneus/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros/genlisp/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros/genmsg/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros/gennodejs/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros/genpy/Config.in"
 
-config BR2_PACKAGE_ROS_ROSUNIT
-	bool
-	depends on BR2_PACKAGE_ROS_FRAMEWORK
-
-config BR2_PACKAGE_ROS_ROSBOOST_CFG
-	bool
-	depends on BR2_PACKAGE_ROS_FRAMEWORK
-
-config BR2_PACKAGE_ROS_ROSMAKE
-	bool
-	depends on BR2_PACKAGE_ROS_FRAMEWORK
-
-config BR2_PACKAGE_ROS_ROSLANG
-	bool
-	depends on BR2_PACKAGE_ROS_FRAMEWORK
-
-config BR2_PACKAGE_ROS_ROSCLEAN
-	bool
-	depends on BR2_PACKAGE_ROS_FRAMEWORK
-
-config BR2_PACKAGE_ROS_ROSCREATE
-	bool
-	depends on BR2_PACKAGE_ROS_FRAMEWORK
+	config BR2_PACKAGE_ROS_PLUGINS_VISUALIZATION
+		bool "Visualization on X11"
+		select BR2_PACKAGE_RVIZ
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros/urdfdom-headers/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros/urdfdom/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros/urdf/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros/rviz/Config.in"
+endif

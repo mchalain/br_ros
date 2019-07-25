@@ -6,4 +6,4 @@ COMMON_MSGS_LICENSE_FILES = LICENSE
 COMMON_MSGS_INSTALL_STAGING=YES
 COMMON_MSGS_ALL_DEPENDENCIES = message_generation std_msgs
 
-include $(sort $(wildcard $(BR2_EXTERNAL_ROS_PATH)/package/ros-common_msgs/*/*.mk))
+include $(sort $(wildcard $(BR2_EXTERNAL_ROS_PATH)/package/ros/ros-common_msgs/*/*.mk))

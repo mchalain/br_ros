@@ -6,4 +6,4 @@ ROS_COMM_LICENSE_FILES = LICENSE
 
 ROS_INSTALL_PREFIX=/opt/ros
 
-include $(sort $(wildcard $(BR2_EXTERNAL_ROS_PATH)/package/ros-comm/*/*.mk))
+include $(sort $(wildcard $(BR2_EXTERNAL_ROS_PATH)/package/ros/ros-comm/*/*.mk))

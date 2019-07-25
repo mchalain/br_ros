@@ -9,6 +9,4 @@ ROS_COMM_MSGS_SITE = https://github.com/ros/ros_comm_msgs/archive
 ROS_COMM_MSGS_LICENSE = BSD3
 ROS_COMM_MSGS_LICENSE_FILES = LICENSE
 
-ROS_INSTALL_PREFIX=/opt/ros
-
-include $(sort $(wildcard $(BR2_EXTERNAL_ROS_PATH)/package/ros-comm-msgs/*/*.mk))
+include $(sort $(wildcard $(BR2_EXTERNAL_ROS_PATH)/package/ros/ros-comm-msgs/*/*.mk))

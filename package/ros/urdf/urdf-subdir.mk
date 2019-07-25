@@ -5,4 +5,4 @@ URDF_LICENSE = BSD3
 URDF_LICENSE_FILES = LICENSE
 URDF_INSTALL_STAGING=YES
 
-include $(sort $(wildcard $(BR2_EXTERNAL_ROS_PATH)/package/urdf/*/*.mk))
+include $(sort $(wildcard $(BR2_EXTERNAL_ROS_PATH)/package/ros/urdf/*/*.mk))

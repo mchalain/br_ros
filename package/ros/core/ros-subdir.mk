@@ -4,4 +4,4 @@ ROS_FRAMEWORK_SITE = https://github.com/ros/ros/archive
 ROS_FRAMEWORK_LICENSE = BSD3
 ROS_FRAMEWORK_LICENSE_FILES = LICENSE
 
-include $(sort $(wildcard $(BR2_EXTERNAL_ROS_PATH)/package/ros/*/*.mk))
+include $(sort $(wildcard $(BR2_EXTERNAL_ROS_PATH)/package/ros/core/*/*.mk))
