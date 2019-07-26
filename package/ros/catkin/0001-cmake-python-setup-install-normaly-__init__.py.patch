@@ -1,0 +1,67 @@
+From 600607b1f7d478bcbe83530cdb851530011bf58b Mon Sep 17 00:00:00 2001
+From: mchalain <marc.chalain@gmail.com>
+Date: Fri, 26 Jul 2019 16:02:23 +0200
+Subject: [PATCH 1/2] [cmake] python setup install normaly __init__.py
+
+---
+ cmake/catkin_python_setup.cmake | 44 ++++++++++++++++-----------------
+ 1 file changed, 22 insertions(+), 22 deletions(-)
+
+diff --git a/cmake/catkin_python_setup.cmake b/cmake/catkin_python_setup.cmake
+index 88e3e51..df4dbf3 100644
+--- a/cmake/catkin_python_setup.cmake
++++ b/cmake/catkin_python_setup.cmake
+@@ -88,28 +88,28 @@ function(catkin_python_setup)
+   endif()
+ 
+   # generate relaying __init__.py for each python package
+-  if(${PROJECT_NAME}_SETUP_PY_PACKAGES)
+-    list(LENGTH ${PROJECT_NAME}_SETUP_PY_PACKAGES pkgs_count)
+-    math(EXPR pkgs_range "${pkgs_count} - 1")
+-    foreach(index RANGE ${pkgs_range})
+-      list(GET ${PROJECT_NAME}_SETUP_PY_PACKAGES ${index} pkg)
+-      if("${pkg}" STREQUAL "${PROJECT_NAME}")
+-        # mark that catkin_python_setup() was called and the setup.py file contains a package with the same name as the current project
+-        # in order to disable installation of generated __init__.py files in generate_messages() and generate_dynamic_reconfigure_options()
+-        set(${PROJECT_NAME}_CATKIN_PYTHON_SETUP_HAS_PACKAGE_INIT TRUE PARENT_SCOPE)
+-      endif()
+-      list(GET ${PROJECT_NAME}_SETUP_PY_PACKAGE_DIRS ${index} pkg_dir)
+-      get_filename_component(name ${pkg_dir} NAME)
+-      if(NOT ("${pkg}" STREQUAL "${name}"))
+-        message(FATAL_ERROR "The package name '${pkg}' differs from the basename of the path '${pkg_dir}' in project '${PROJECT_NAME}'")
+-      endif()
+-      get_filename_component(path ${pkg_dir} PATH)
+-      set(PACKAGE_PYTHONPATH ${CMAKE_CURRENT_SOURCE_DIR}/${path})
+-      configure_file(${catkin_EXTRAS_DIR}/templates/__init__.py.in
+-        ${CATKIN_DEVEL_PREFIX}/${PYTHON_INSTALL_DIR}/${pkg}/__init__.py
+-        @ONLY)
+-    endforeach()
+-  endif()
++  #if(${PROJECT_NAME}_SETUP_PY_PACKAGES)
++  #  list(LENGTH ${PROJECT_NAME}_SETUP_PY_PACKAGES pkgs_count)
++  #  math(EXPR pkgs_range "${pkgs_count} - 1")
++  #  foreach(index RANGE ${pkgs_range})
++  #    list(GET ${PROJECT_NAME}_SETUP_PY_PACKAGES ${index} pkg)
++  #    if("${pkg}" STREQUAL "${PROJECT_NAME}")
++  #      # mark that catkin_python_setup() was called and the setup.py file contains a package with the same name as the current project
++  #      # in order to disable installation of generated __init__.py files in generate_messages() and generate_dynamic_reconfigure_options()
++  #      set(${PROJECT_NAME}_CATKIN_PYTHON_SETUP_HAS_PACKAGE_INIT TRUE PARENT_SCOPE)
++  #    endif()
++  #    list(GET ${PROJECT_NAME}_SETUP_PY_PACKAGE_DIRS ${index} pkg_dir)
++  #    get_filename_component(name ${pkg_dir} NAME)
++  #    if(NOT ("${pkg}" STREQUAL "${name}"))
++  #      message(FATAL_ERROR "The package name '${pkg}' differs from the basename of the path '${pkg_dir}' in project '${PROJECT_NAME}'")
++  #    endif()
++  #    get_filename_component(path ${pkg_dir} PATH)
++  #    set(PACKAGE_PYTHONPATH ${CMAKE_CURRENT_SOURCE_DIR}/${path})
++  #    configure_file(${catkin_EXTRAS_DIR}/templates/__init__.py.in
++  #      ${CATKIN_DEVEL_PREFIX}/${PYTHON_INSTALL_DIR}/${pkg}/__init__.py
++  #      @ONLY)
++  #  endforeach()
++  #endif()
+ 
+   # generate relay-script for each python module (and __init__.py files) if available
+   if(${PROJECT_NAME}_SETUP_PY_MODULES)
+-- 
+2.17.1
+

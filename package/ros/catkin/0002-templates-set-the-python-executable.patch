@@ -1,0 +1,24 @@
+From 0891d860bee3d0b665cd969601d765b63ff71cf5 Mon Sep 17 00:00:00 2001
+From: mchalain <marc.chalain@gmail.com>
+Date: Fri, 26 Jul 2019 16:08:22 +0200
+Subject: [PATCH 2/2] [templates] set the python executable
+
+---
+ cmake/templates/python_distutils_install.sh.in | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/cmake/templates/python_distutils_install.sh.in b/cmake/templates/python_distutils_install.sh.in
+index 2e550b3..cb973bc 100755
+--- a/cmake/templates/python_distutils_install.sh.in
++++ b/cmake/templates/python_distutils_install.sh.in
+@@ -28,6 +28,7 @@ echo_and_run /usr/bin/env \
+     "@PYTHON_EXECUTABLE@" \
+     "@CMAKE_CURRENT_SOURCE_DIR@/setup.py" \
+     build --build-base "@CMAKE_CURRENT_BINARY_DIR@" \
++    --executable="/usr/bin/python@_PYTHON_PATH_VERSION_SUFFIX@" \
+     install \
+     $DESTDIR_ARG \
+     @SETUPTOOLS_ARG_EXTRA@ --prefix="@CMAKE_INSTALL_PREFIX@" --install-scripts="@CMAKE_INSTALL_PREFIX@/@CATKIN_GLOBAL_BIN_DESTINATION@"
+-- 
+2.17.1
+
