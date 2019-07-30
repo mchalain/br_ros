@@ -11,9 +11,8 @@ ROSPACK_LICENSE_FILES = LICENSE
 ROSPACK_DEPENDENCIES+=host-cmake-modules
 ROSPACK_DEPENDENCIES+=boost
 ROSPACK_DEPENDENCIES+=tinyxml
+ROSPACK_DEPENDENCIES+=rosgraph
 ROSPACK_INSTALL_STAGING=YES
 #ROSPACK_DEPENDENCIES+=boost-filesystem boost-program_options boost-system
-
-ROS_INSTALL_PREFIX=/opt/ros
 
 $(eval $(catkin-package))
