@@ -10,5 +10,7 @@ PYTHON_ROSPKG_SITE = https://files.pythonhosted.org/packages/10/69/cc50592ac6784
 PYTHON_ROSPKG_SETUP_TYPE = setuptools
 PYTHON_ROSPKG_LICENSE = FIXME: please specify the exact BSD version
 
+PYTHON_ROSPKG_INSTALL_TARGET_OPTS += --prefix=$(BR2_PACKAGE_ROS_INSTALL_PREFIX)
+PYTHON_ROSPKG_INSTALL_TARGET_OPTS += --root=$(TARGET_DIR)
+
 $(eval $(python-package))
-$(eval $(host-python-package))
