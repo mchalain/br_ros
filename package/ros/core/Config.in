@@ -1,5 +1,6 @@
 config BR2_PACKAGE_ROS_FRAMEWORK
 	bool "framework base"
+	depends on BR2_PACKAGE_CATKIN
 	depends on BR2_PACKAGE_ROS
 	select BR2_PACKAGE_ROS_MK
 	select BR2_PACKAGE_ROS_ROSBASH
