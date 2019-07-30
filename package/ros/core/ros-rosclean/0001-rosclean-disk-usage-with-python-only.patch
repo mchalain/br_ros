@@ -1,0 +1,45 @@
+From df001cd097cb160378d608d2d42de7fbf162b01b Mon Sep 17 00:00:00 2001
+From: mchalain <marc.chalain@smile.fr>
+Date: Tue, 30 Jul 2019 10:41:27 +0200
+Subject: [PATCH] [rosclean] disk usage with python only
+
+---
+ tools/rosclean/src/rosclean/__init__.py | 21 ++++++---------------
+ 1 file changed, 6 insertions(+), 15 deletions(-)
+
+diff --git a/tools/rosclean/src/rosclean/__init__.py b/tools/rosclean/src/rosclean/__init__.py
+index 5dafb05..7ee8782 100644
+--- a/tools/rosclean/src/rosclean/__init__.py
++++ b/tools/rosclean/src/rosclean/__init__.py
+@@ -121,22 +121,13 @@ def get_disk_usage(d):
+     """
+     Get disk usage in bytes for directory
+     :param d: directory path, ``str``
+-    :returns: disk usage in bytes (du -b) or (du -A) * 1024, ``int``
+-    :raises: :exc:`CleanupException` If get_disk_usage() cannot be used on this platform
++    :returns: disk usage in bytes
+     """
+-    # only implemented on Linux and FreeBSD for now. Should work on OS X but need to verify first (du is not identical)
+-    if platform.system() == 'Linux':
+-        try:
+-            return int(subprocess.Popen(['du', '-sb', d], stdout=subprocess.PIPE).communicate()[0].split()[0])
+-        except:
+-            raise CleanupException("rosclean is not supported on this platform")
+-    elif platform.system() == 'FreeBSD':
+-        try:
+-            return int(subprocess.Popen(['du', '-sA', d], stdout=subprocess.PIPE).communicate()[0].split()[0]) * 1024
+-        except:
+-            raise CleanupException("rosclean is not supported on this platform")
+-    else:
+-        raise CleanupException("rosclean is not supported on this platform")
++    size = 0
++    for root, dirs, files in os.walk(d):
++            for name in files:
++                size += os.path.getsize(os.path.join(root,name))
++    return size
+ 
+ def _rosclean_cmd_purge(args):
+     dirs = _get_check_dirs()
+-- 
+2.17.1
+
