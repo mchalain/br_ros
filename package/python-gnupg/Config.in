@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_GNUPG
+	bool "python-gnupg"
+	select BR2_PACKAGE_PYTHON_PSUTIL # runtime
+	help
+	  A Python wrapper for GnuPG.
+
+	  https://github.com/isislovecruft/python-gnupg
