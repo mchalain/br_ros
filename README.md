@@ -8,11 +8,11 @@ Currently only Buildroot 2018.05.x branch is available.
 
 ## INSTALL:
 
-```
+```bash
 $ git clone https://github.com/buildroot/buildroot.git -b 2018.05.x
 $ git clone <this package URL>
 $ cd br_ros
-$ make -C <buildroot directory> O=${PWD}/output BR2_EXTERNAL=${PWD} ros_raspi3_defconfig
+$ make -C <buildroot directory> O=${PWD}/output BR2_EXTERNAL=${PWD} BR2_CONFIG=ros_raspi3_defconfig defconfig
 $ cd output
 $ make
 ```
