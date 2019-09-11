@@ -87,4 +87,6 @@ if BR2_PACKAGE_ROS_PLUGINS
 	source "$BR2_EXTERNAL_ROS_PATH/package/ros/urdfdom/Config.in"
 	source "$BR2_EXTERNAL_ROS_PATH/package/ros/urdf/Config.in"
 	source "$BR2_EXTERNAL_ROS_PATH/package/ros/rviz/Config.in"
+
+	source "$BR2_EXTERNAL_ROS_PATH/package/ros/perception/Config.in"
 endif

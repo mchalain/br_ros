@@ -5,6 +5,7 @@ menu "Python Host packages"
 	source "$BR2_EXTERNAL_ROS_PATH/package/python-pyparsing-host/Config.in"
 	source "$BR2_EXTERNAL_ROS_PATH/package/python-pyyaml-host/Config.in"
 	source "$BR2_EXTERNAL_ROS_PATH/package/python-dateutil-host/Config.in"
+	source "$BR2_EXTERNAL_ROS_PATH/package/python-numpy-host/Config.in"
 endmenu
 
 menu "Python packages"
