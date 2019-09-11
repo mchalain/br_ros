@@ -1,0 +1,16 @@
+################################################################################
+#
+# image_common/camera_calibration_parsers
+#
+################################################################################
+ROS_CAMERA_CALIBRATION_PARSERS_SOURCE = $(ROS_IMAGE_COMMON_SOURCE)
+ROS_CAMERA_CALIBRATION_PARSERS_SITE = $(ROS_IMAGE_COMMON_SITE)
+ROS_CAMERA_CALIBRATION_PARSERS_LICENSE = $(ROS_IMAGE_COMMON_LICENSE)
+ROS_CAMERA_CALIBRATION_PARSERS_LICENSE_FILES = $(ROS_IMAGE_COMMON_LICENSE_FILES)
+ROS_CAMERA_CALIBRATION_PARSERS_INSTALL_STAGING=YES
+ROS_CAMERA_CALIBRATION_PARSERS_DEPENDENCIES += boost
+ROS_CAMERA_CALIBRATION_PARSERS_DEPENDENCIES += yaml-cpp
+
+ROS_CAMERA_CALIBRATION_PARSERS_SUBDIR = camera_calibration_parsers
+
+$(eval $(catkin-package))

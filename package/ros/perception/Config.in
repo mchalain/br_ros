@@ -1,0 +1,10 @@
+config BR2_PACKAGE_ROS_PERCEPTION
+	bool "Perception"
+	depends on BR2_PACKAGE_ROS_PLUGINS
+	select BR2_PACKAGE_ROS_IMAGE_COMMON
+	select BR2_PACKAGE_ROS_IMAGE_PIPELINE
+
+source "$BR2_EXTERNAL_ROS_PATH/package/ros/perception/ros-image_common/Config.in"
+source "$BR2_EXTERNAL_ROS_PATH/package/ros/perception/ros-vision_opencv/Config.in"
+source "$BR2_EXTERNAL_ROS_PATH/package/ros/perception/ros-image_pipeline/Config.in"
+
