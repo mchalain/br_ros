@@ -13,6 +13,7 @@ CATKIN_SITE = https://github.com/ros/catkin/archive
 CATKIN_LICENSE = BSD3
 CATKIN_LICENSE_FILES = LICENSE
 CATKIN_DEPENDENCIES += python-catkin-pkg
+CATKIN_DEPENDENCIES += host-catkin
 HOST_CATKIN_DEPENDENCIES += host-cmake
 HOST_CATKIN_DEPENDENCIES += host-python-empy
 HOST_CATKIN_DEPENDENCIES += host-python-catkin-pkg
